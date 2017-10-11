@@ -7,40 +7,40 @@ export default class Terrain{
     var x = 0;
     var y = Math.random()*screenHeight/2  + screenHeight/2 - 10;
     var dist = Math.random() * 10;
-    this.path = [];
+    this.path = [x: x, y: y];
 
-  }
+    function clampHeight(y){
+      do{
+        var newHeight = y;
+        var probability = Math.random();
+        if(probability < 0.45){
+          newHeight -= Math.random() * 50;
+        } //45% chance
+        else if(probability < 0.9){
+          newHeight += Math.random() * 50;
+        }
 
-  function clampHeight(y){
-    do{
-      var newHeight = y;
-      var probability = Math.random();
-      if(probability < 0.45){
-        newHeight -= Math.random() * 50;
-      } //45% chance
-      else if(probability < 0.9){
-        newHeight += Math.random() * 50;
+      }while(newHeight < screenHeight/2 || newHeight > screenHeight);
+      return newHeight
+    }
+      while(x < screenWidth){
+        x = x + Math.Random() * 50;
+
+        y = clampHeight(y);
+
+        this.path.push({
+          x: x,
+          y: y
+        });
+
+        x += dist;
+        y = screenHeight;
+
+        dist = Math.random() * 10;
       }
 
-    }while(newHeight < screenHeight/2 || newHeight > screenHeight);
-    return newHeight
   }
-    while(x < width){
-      x = x + Math.Random() * 50;
 
-      y = clampHeight(y);
-
-      this.path.push(){
-        x: x,
-        y: y
-      });
-
-      x += dist;
-      y = height;
-
-      dist = Math.random() * 10;
-    }
-  }
 
   render(ctx){
     ctx.save();
