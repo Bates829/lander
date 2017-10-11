@@ -24,7 +24,7 @@ export default class Terrain{
       return newHeight
     }
       while(x < screenWidth){
-        x = x + Math.Random() * 50;
+        x = x + Math.random() * 50;
 
         y = clampHeight(y);
 
@@ -44,6 +44,7 @@ export default class Terrain{
 
   render(ctx){
     ctx.save();
+    ctx.strokeStyle = "#fff";
     ctx.beginPath();
     ctx.moveTo(this.path[0].x, this.path[0].y);
     for(var i = 1; i < this.path.length; i++){

@@ -14,11 +14,12 @@ export default class Ship{
     ctx.strokeStyle = '#fff';
     ctx.beginPath();
     ctx.rotate(this.angle);
-    ctx.moveTo(this.x, this.y +5);
-    ctx.lineTo(this.x + 2, this.y - 5);
-    ctx.lineTo(this.x - 2,this.y - 5);
+    ctx.translate(this.x, this.y);
+    ctx.moveTo(0, -5);
+    ctx.lineTo(2, 5);
+    ctx.lineTo(2,-5);
     ctx.closePath();
-    ctx.strok();
+    ctx.stroke();
     ctx.restore();
   }
 }
